@@ -1,0 +1,242 @@
+@import "tailwindcss";
+
+/* Main Layout & Animated Background */
+@keyframes bgGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+body {
+  margin: 0;
+  background-color: #030408;
+  background-image: 
+    radial-gradient(circle at 10% 20%, rgba(20, 10, 40, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 90% 80%, rgba(10, 30, 50, 0.6) 0%, transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(5, 5, 12, 1) 0%, rgba(2, 2, 4, 1) 100%);
+  background-size: 200% 200%;
+  animation: bgGradient 20s ease infinite;
+  color: #e2e8f0;
+  font-family: 'Outfit', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism Styles */
+.glass-panel {
+  background: rgba(15, 18, 30, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+}
+
+.glass-input {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  transition: all 0.2s ease-in-out;
+}
+.glass-input:focus {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.15);
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.01);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Highlight.js Global Structure */
+pre code.hljs {
+  padding: 0;
+  background: transparent;
+}
+
+/* Syntax Highlighting Bindings using Theme CSS Variables */
+.hljs-keyword, .hljs-selector-tag { color: var(--syn-keyword); font-weight: 600; }
+.hljs-string, .hljs-regexp, .hljs-addition { color: var(--syn-string); }
+.hljs-comment, .hljs-quote { color: var(--syn-comment); font-style: italic; }
+.hljs-number, .hljs-literal, .hljs-bullet { color: var(--syn-number); }
+.hljs-function, .hljs-title, .hljs-section { color: var(--syn-function); }
+.hljs-built_in, .hljs-type, .hljs-symbol { color: var(--syn-built_in); }
+.hljs-attr, .hljs-attribute { color: var(--syn-attr); }
+.hljs-variable, .hljs-template-variable { color: var(--syn-variable); }
+.hljs-operator, .hljs-punctuation { color: var(--syn-operator); }
+.hljs-property { color: var(--syn-property); }
+
+/* --- 1. STAGE DARK --- */
+.theme-stage-dark {
+  --syn-bg: #151720;
+  --syn-text: #c8cdd9;
+  --syn-keyword: #c792ea;
+  --syn-string: #c3e88d;
+  --syn-comment: #676e8a;
+  --syn-number: #f78c6c;
+  --syn-function: #82aaff;
+  --syn-built_in: #ffcb6b;
+  --syn-attr: #f07178;
+  --syn-variable: #f07178;
+  --syn-operator: #89ddff;
+  --syn-property: #f07178;
+}
+
+/* --- 2. STAGE LIGHT --- */
+.theme-stage-light {
+  --syn-bg: #ffffff;
+  --syn-text: #24292e;
+  --syn-keyword: #d73a49;
+  --syn-string: #032f62;
+  --syn-comment: #6a737d;
+  --syn-number: #005cc5;
+  --syn-function: #6f42c1;
+  --syn-built_in: #e36209;
+  --syn-attr: #e36209;
+  --syn-variable: #e36209;
+  --syn-operator: #24292e;
+  --syn-property: #6f42c1;
+}
+
+/* --- 3. MIDNIGHT CYBERPUNK --- */
+.theme-cyberpunk {
+  --syn-bg: #07030f;
+  --syn-text: #00f0ff;
+  --syn-keyword: #ff0055;
+  --syn-string: #fffb00;
+  --syn-comment: #5c4c8f;
+  --syn-number: #ff9d00;
+  --syn-function: #00f0ff;
+  --syn-built_in: #00ff66;
+  --syn-attr: #ff00ff;
+  --syn-variable: #ffffff;
+  --syn-operator: #ff0055;
+  --syn-property: #ff00ff;
+}
+
+/* --- 4. DRACULA CLASSIC --- */
+.theme-dracula {
+  --syn-bg: #282a36;
+  --syn-text: #f8f8f2;
+  --syn-keyword: #ff79c6;
+  --syn-string: #f1fa8c;
+  --syn-comment: #6272a4;
+  --syn-number: #bd93f9;
+  --syn-function: #50fa7b;
+  --syn-built_in: #8be9fd;
+  --syn-attr: #ffb86c;
+  --syn-variable: #f8f8f2;
+  --syn-operator: #ff79c6;
+  --syn-property: #50fa7b;
+}
+
+/* --- 5. EMERALD GREENROOM --- */
+.theme-greenroom {
+  --syn-bg: #0f1411;
+  --syn-text: #d4e4d8;
+  --syn-keyword: #afbda3;
+  --syn-string: #dbca9a;
+  --syn-comment: #55685c;
+  --syn-number: #cfa07e;
+  --syn-function: #a1c5b1;
+  --syn-built_in: #cca687;
+  --syn-attr: #cca687;
+  --syn-variable: #d4e4d8;
+  --syn-operator: #cca687;
+  --syn-property: #a1c5b1;
+}
+
+/* --- 6. SOLARIZED DAYLIGHT --- */
+.theme-daylight {
+  --syn-bg: #fdf6e3;
+  --syn-text: #586e75;
+  --syn-keyword: #859900;
+  --syn-string: #2aa198;
+  --syn-comment: #93a1a1;
+  --syn-number: #d33682;
+  --syn-function: #268bd2;
+  --syn-built_in: #cb4b16;
+  --syn-attr: #b58900;
+  --syn-variable: #268bd2;
+  --syn-operator: #93a1a1;
+  --syn-property: #268bd2;
+}
+
+/* --- 7. NORD FROST --- */
+.theme-nord-frost {
+  --syn-bg: #2e3440;
+  --syn-text: #d8dee9;
+  --syn-keyword: #81a1c1;
+  --syn-string: #a3be8c;
+  --syn-comment: #4c566a;
+  --syn-number: #b48ead;
+  --syn-function: #88c0d0;
+  --syn-built_in: #8fbcbb;
+  --syn-attr: #d8dee9;
+  --syn-variable: #e5e9f0;
+  --syn-operator: #81a1c1;
+  --syn-property: #88c0d0;
+}
+
+/* --- 8. DEEP SPACE --- */
+.theme-deep-space {
+  --syn-bg: #070712;
+  --syn-text: #c6c8eb;
+  --syn-keyword: #ae7cf7;
+  --syn-string: #56f29a;
+  --syn-comment: #42476d;
+  --syn-number: #f5c256;
+  --syn-function: #5cb7f2;
+  --syn-built_in: #f56e8d;
+  --syn-attr: #f56e8d;
+  --syn-variable: #c6c8eb;
+  --syn-operator: #b5adfc;
+  --syn-property: #5cb7f2;
+}
+
+/* Slide Editor Styling Utilities */
+.code-window {
+  background: var(--syn-bg);
+  color: var(--syn-text);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Line Highlighting feature classes */
+.code-line {
+  display: flex;
+  align-items: baseline;
+  width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  transition: all 0.2s ease;
+}
+
+.code-line.dimmed {
+  opacity: 0.3;
+  filter: blur(0.4px);
+}
+
+.code-line.highlighted {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 4px 0 0 rgba(139, 92, 246, 0.8);
+}
+.theme-stage-light .code-line.highlighted {
+  background: rgba(0, 0, 0, 0.03);
+  box-shadow: inset 4px 0 0 rgba(124, 58, 237, 0.8);
+}
+.theme-daylight .code-line.highlighted {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 4px 0 0 rgba(181, 137, 0, 0.8);
+}
