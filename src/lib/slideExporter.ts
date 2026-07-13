@@ -158,7 +158,7 @@ export async function exportPptx({
       bold: true,
       color: activeTheme.pptxTitle,
       fontFace: "Arial",
-      verticalAlign: "middle",
+      valign: "middle",
     });
   }
 
@@ -316,7 +316,7 @@ export async function exportPptx({
     y: codeY + paddingY,
     w: 12.13 - paddingX * 2,
     h: codeH - paddingY * 2,
-    verticalAlign: "top",
+    valign: "top",
   });
 
   const safeCaption = caption

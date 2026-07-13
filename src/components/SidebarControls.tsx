@@ -31,7 +31,7 @@ import {
   SelectValue 
 } from "./ui/select"
 import { Card, CardContent } from "./ui/card"
-import { SLIDE_THEMES, type SlideTheme } from "@/lib/themes"
+import { SLIDE_THEMES } from "@/lib/themes"
 import { cn } from "@/lib/utils"
 
 interface SidebarControlsProps {

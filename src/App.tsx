@@ -9,7 +9,7 @@
 import { useState, useEffect, useRef, useMemo } from "react"
 import { SlidePreview } from "./components/SlidePreview"
 import { SidebarControls } from "./components/SidebarControls"
-import { SLIDE_THEMES, type SlideTheme } from "./lib/themes"
+import { SLIDE_THEMES } from "./lib/themes"
 import { Sparkles, Layout, Sliders, X, RotateCw } from "lucide-react"
 import { cn } from "./lib/utils"
 import { exportPng, exportPptx } from "./lib/slideExporter"
