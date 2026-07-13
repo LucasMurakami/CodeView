@@ -22,6 +22,7 @@ interface SlidePreviewProps {
   title: string;
   caption: string;
   fontFamily: string;
+  compact?: boolean;
 }
 
 // Bulletproof HTML tag-preserving line-splitter for highlight.js output
@@ -89,6 +90,7 @@ export const SlidePreview: React.FC<SlidePreviewProps> = ({
   title,
   caption,
   fontFamily,
+  compact = false,
 }) => {
   // Highlight code and split into clean lines
   const highlightedLinesHtml = useMemo(() => {
@@ -124,17 +126,13 @@ export const SlidePreview: React.FC<SlidePreviewProps> = ({
 
   // Dynamic code font sizing to fit exactly N lines in the vertical slide space
   const fontStyle = useMemo(() => {
-    // Total slide height is 1080px. Parent padding (p-20) takes 160px total.
-    let availableHeight = 920;
+    const paddingSize = compact ? 80 : 160;
+    let availableHeight = 1080 - paddingSize;
 
-    // Subtract space taken by optional headers or footers
     if (title) availableHeight -= 110;
     if (caption) availableHeight -= 60;
 
-    // Calculate base font size for N visible lines with 1.55 line height
     const baseFontSize = (availableHeight / visibleLines) / 1.55;
-
-    // Apply user's custom zoom scale multiplier
     const finalSize = Math.max(12, Math.min(64, baseFontSize * zoomScale));
 
     return {
@@ -142,14 +140,15 @@ export const SlidePreview: React.FC<SlidePreviewProps> = ({
       lineHeight: "1.55",
       fontFamily: fontFamily,
     };
-  }, [title, caption, visibleLines, zoomScale, fontFamily]);
+  }, [title, caption, visibleLines, zoomScale, fontFamily, compact]);
 
   return (
     // Physical size container (always 1920x1080 in virtual layout)
     <div
       id="capture-slide"
       className={cn(
-        "relative w-[1920px] h-[1080px] select-none flex flex-col justify-between p-20 overflow-hidden transition-all duration-300",
+        "relative w-[1920px] h-[1080px] select-none flex flex-col justify-between overflow-hidden transition-all duration-300",
+        compact ? "p-10" : "p-20",
         theme.bgClass,
         theme.className
       )}

@@ -64,6 +64,7 @@ interface SidebarControlsProps {
   onDownloadPptx: () => void;
   isExportingPng: boolean;
   isExportingPptx: boolean;
+  hideCodeInput?: boolean;
 }
 
 const LANGUAGES = [
@@ -128,11 +129,13 @@ export const SidebarControls: React.FC<SidebarControlsProps> = ({
   onDownloadPptx,
   isExportingPng,
   isExportingPptx,
+  hideCodeInput = false,
 }) => {
   return (
-    <div className="flex-1 flex flex-col gap-6 overflow-y-auto pr-2 pb-6">
+    <div className="flex-1 flex flex-col gap-6 overflow-y-auto pr-2 pb-8" style={{ paddingBottom: "calc(1.5rem + env(safe-area-inset-bottom, 0px))" }}>
       
-      {/* 1. INPUT CODE SECTION */}
+      {/* 1. INPUT CODE SECTION (hidden on mobile since it's in the main layout) */}
+      {!hideCodeInput && (
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <label className="text-sm font-semibold flex items-center gap-2 text-violet-400">
@@ -151,6 +154,7 @@ export const SidebarControls: React.FC<SidebarControlsProps> = ({
           spellCheck={false}
         />
       </div>
+      )}
 
 
       {/* 3. SETTINGS & STYLING */}
@@ -330,7 +334,7 @@ export const SidebarControls: React.FC<SidebarControlsProps> = ({
               <button
                 key={t.id}
                 className={cn(
-                  "relative flex flex-col gap-2 rounded-xl p-2 border text-left transition-all duration-200 cursor-pointer overflow-hidden",
+                  "relative flex flex-col gap-2 rounded-xl p-3 border text-left transition-all duration-200 cursor-pointer overflow-hidden",
                   selectedThemeId === t.id 
                     ? "border-violet-500 bg-violet-600/10 shadow-lg shadow-violet-950/20 ring-1 ring-violet-500" 
                     : "border-slate-800 bg-slate-900/40 hover:border-slate-700 hover:bg-slate-850/60"
@@ -354,6 +358,7 @@ export const SidebarControls: React.FC<SidebarControlsProps> = ({
                   style={{
                     backgroundColor: `var(--syn-bg)`,
                     color: `var(--syn-text)`,
+                    minHeight: "52px",
                   }}
                 >
                   <div className="flex gap-1">
