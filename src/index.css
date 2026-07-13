@@ -20,6 +20,20 @@ body {
   font-family: 'Outfit', sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  /* Prevent double-tap zoom on mobile interactive elements */
+  touch-action: manipulation;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+    background-size: auto;
+  }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Glassmorphism Styles */
